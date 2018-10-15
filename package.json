@@ -1,6 +1,6 @@
 {
   "name": "fc-cron-parser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Browser library for parsing crontab instructions",
   "main": "lib/parser.js",
   "types": "lib/index.d.ts",
