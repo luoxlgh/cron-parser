@@ -1,15 +1,13 @@
-cron-parser
+fc-cron-parser
 ================
 
-[![Build Status](https://travis-ci.org/harrisiirak/cron-parser.svg?branch=master)](https://travis-ci.org/harrisiirak/cron-parser)
-[![NPM version](https://badge.fury.io/js/cron-parser.png)](http://badge.fury.io/js/cron-parser)
-
-Node.js library for parsing crontab instructions. It includes support for timezones and DST transitions.
+Browser library for parsing crontab instructions.
+Differ from [cron-parser](https://github.com/harrisiirak/cron-parser), it uses date-fns instead of moment.js to shrink package size. Besides, it excludes support for timezones.
 
 Setup
 ========
 ```bash
-npm install cron-parser
+npm install fc-cron-parser
 ```
 
 Supported format
@@ -86,26 +84,6 @@ try {
 
 ```
 
-Timezone support
-
-```javascript
-var parser = require('cron-parser');
-
-var options = {
-  currentDate: '2016-03-27 00:00:01',
-  tz: 'Europe/Athens'
-};
-
-try {
-  var interval = parser.parseExpression('0 * * * *', options);
-
-  console.log('Date: ', interval.next().toString()); // Date:  Sun Mar 27 2016 01:00:00 GMT+0200
-  console.log('Date: ', interval.next().toString()); // Date:  Sun Mar 27 2016 02:00:00 GMT+0200
-  console.log('Date: ', interval.next().toString()); // Date:  Sun Mar 27 2016 04:00:00 GMT+0300 (Notice DST transition)
-} catch (err) {
-  console.log('Error: ' + err.message);
-}
-```
 
 Options
 ========
@@ -124,6 +102,4 @@ Using `Date` as an input can be problematic specially when using the `tz` option
 any timezone information, it will be created in the timezone of the system that is running the code. This (most of times) won't be what the user
 will be expecting. Using one of the supported `string` formats will solve the issue(see timezone example).
 
-* *iterator* - Return ES6 compatible iterator object 
-* *utc* - Enable UTC
-* *tz* - Timezone string. It won't be used in case `utc` is enabled
+* *iterator* - Return ES6 compatible iterator object
